@@ -7,7 +7,7 @@ def connect(thread_index):
     cherrypy.thread_data.db = sqlite3.connect("users.db")
                  
 cherrypy.engine.subscribe('start_thread', connect)
-env = Environment(loader=FileSystemLoader('templates'))
+env = Environment(loader=FileSystemLoader('static_files'))
 
 class NewrelicPlugins:  
     exposed = True
