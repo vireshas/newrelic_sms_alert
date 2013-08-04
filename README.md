@@ -13,13 +13,14 @@ NewRelic alerts via SMS
     something like runscope.com, if you want to test it with newrelic, before deploying.  
     With runscope.com, you can quickly expose a localservice to public.  
 
-    Learn about creating webhook channels in newrelic. Create a channel for webhook and when you create  
+    Google about creating webhook channels in newrelic. Create a channel for webhook and when you create  
     a new alert policy add this webhook as a alert channel.
 
     Any change in settings.py file can be quickly consumed by the app without restarting by sending it  
-    a USR1 signal. Ex: ps aux | grep webhook #note down the pid and then run this command, kill -s USR1 pid  
-    the service will pick the new set of plugins.   
+    a USR1 signal. Ex: ps aux | grep webhook #note down the pid and then run this command,   
+    kill -s USR1 pid the service will pick the new set of plugins.   
 
     Visit localhost:8080/usage, to manage users and to subscribe to a plugin.
 
-
+More features:
+    1. Call devs and read out the alert on critical errors
