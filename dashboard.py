@@ -1,7 +1,7 @@
 import cherrypy
 from jinja2 import Environment, FileSystemLoader
 
-env = Environment(loader=FileSystemLoader('templates'))
+env = Environment(loader=FileSystemLoader('static_files'))
 
 class Dashboard:
     @cherrypy.expose
