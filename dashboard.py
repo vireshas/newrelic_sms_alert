@@ -10,11 +10,6 @@ class Dashboard:
         return tmp.render()
     subscribe.exposed = True
 
-    def dashboard1(self):
-        tmp = env.get_template("dashboard1.html")
-        return tmp.render()
-    dashboard1.exposed = True
-
     def usage(self):
         tmp = env.get_template("usage.html")
         return tmp.render()
