@@ -11,12 +11,12 @@
 	</head>
 	<body>
 		<div class="container">
-			<div id="nav_bar" class="row">  
-				<div class="col-md-3"> 
-					<center><h2><small>Dashboard</small></h2></center>	
+			<div id="nav_bar" class="row">
+				<div class="col-md-3">
+					<center><h2><small>Dashboard</small></h2></center>
 					<ul class="nav nav-pills nav-stacked">
 						<li><a href="/usage" class="btn">Usage</a></li>
-						<li><a href="/subscribe" class="btn">Subscribe</a></li>   
+						<li><a href="/subscribe" class="btn">Subscribe</a></li>
 						<li><a href="/plugin?user=all_details" class="btn {% if type == "user" %} active" {% else %}" {% endif %}>Users</a></li>
 					</ul>
 				</div>
@@ -28,7 +28,7 @@
 						<li>{{element[0]}}  <button type="submit" id="{{element[0]}}">New User; Add details</button></li>
 						{% endif %}
 					{% endfor %}
-					</br>	
+					</br>
 					<div id="adding_new_user" style="display:none">
 						Email: <input type="email" id="new_user" placeholder="Enter email" readonly size=30></br>
 						Ph.No: <input type="text" id="ph_num" placeholder="Enter phone number" size="30"></br>
