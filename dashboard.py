@@ -23,7 +23,9 @@ class Dashboard:
         #details = u.get_users()
         #details = u.plugins_subscribed_by("viresh.sanagoudar@ibibogroup.com")
         #details = u.update_plugins_for(['memcache', "redis"],"viresh.sanagoudar@ibibogroup.com")
-        details = u.update_ph_num_for("7878","viresh.sanagoudar@ibibogroup.com")
+        #details = u.update_ph_num_for("7878","viresh.sanagoudar@ibibogroup.com")
+        details = u.create_new_user("xxviresh.sanagoudar@ibibogroup.com", "34523")
+
 
         #p = PluginUsers()
         #details = p.update_users_for(["viresh.sanagoudar@ibibogroup.com"], "redis")
