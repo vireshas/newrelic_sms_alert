@@ -21,7 +21,6 @@ class DbHelper:
             response = con.execute(query).fetchall()
         return response
 
-
     def update(self, table, set_key, set_value, where_key, where_value, json_value=""):
         con = cherrypy.thread_data.db.cursor()
         partial_query = "update %s set %s=? where %s=?" % (table, set_key, where_key)
@@ -29,3 +28,9 @@ class DbHelper:
         params = (set_value, where_value)
         con.execute(partial_query, params)
         cherrypy.thread_data.db.commit()
+
+    def insert(self, query, params):
+        con = cherrypy.thread_data.db.cursor()
+        con.execute(query, params)
+        cherrypy.thread_data.db.commit()
+
