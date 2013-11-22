@@ -124,6 +124,5 @@ class NewrelicPlugins:
 
             else:
                 print "creating new user %s with ph_num %s" % (user,ph_num)
-                res = con.execute("insert into user_plugins values(?,?,?)", (user, json.dumps([]), ph_num))
-                cherrypy.thread_data.db.commit()
+                UserPlugins().create_new_user(user, ph_num)
                 return("created new user")
