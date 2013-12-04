@@ -16,3 +16,6 @@ class UserPlugins:
 
     def update_plugins_for(self, plugins, user):
         return self.db.update(self.table, "plugins", plugins, "user", user)
+
+    def update_ph_num_for(self, ph_num, user):
+        return self.db.update(self.table, "ph_num", ph_num, "user", user, "false")
