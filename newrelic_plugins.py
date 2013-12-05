@@ -79,8 +79,7 @@ class NewrelicPlugins:
         tmp = env.get_template('user_plugins.html')
 
         if user and ph_num != "new":
-            res = con.execute("update user_plugins set ph_num=? where user=?", (ph_num, user))
-            cherrypy.thread_data.db.commit()
+            res = UserPlugins().update_ph_num_for(ph_num, user)
             return("user details updated")
 
         #if not plugin: return(tmp.render(plugins = [], warnings = "Please pass a plugin name"))
