@@ -19,7 +19,7 @@ class NewrelicPlugins:
         tmp_json = env.get_template('users.html')
 
         if plugin == "plugin" or plugin == "app":
-            plugins = con.execute("select plugin from plugin_users where type=?", (plugin,)).fetchall()
+            plugins = PluginUsers().get_plugin_of_type(plugin)
             plugins = [u[0] for u in plugins]
             if type=="json":
                 return tmp_json.render(elements=json.dumps(plugins))
@@ -65,13 +65,14 @@ class NewrelicPlugins:
                 return tmp.render(plugins = json.loads(res[0][0]))
 
         if plugin:
-            plugins = con.execute("select users from plugin_users where plugin = ?", (plugin,)).fetchall()
+            plugins = PluginUsers().users_subscribed_to_a(plugin)
             if not plugins:
                 return tmp.render(plugins = [])
             elif type == "json":
                 return tmp_json.render(elements = plugins[0][0])
             else:
                 return tmp.render(plugins = json.loads(plugins[0][0]))
+
 
     def POST(self, user="", plugin="", ph_num="new"):
         con = cherrypy.thread_data.db.cursor()
