@@ -17,9 +17,13 @@ class Dashboard:
 
     def new_models(self):
         from models.user_plugins import UserPlugins
-        u = UserPlugins()
-        details = u.get_users()
-        details = u.plugins_subscribed_by("viresh.sanagoudar@ibibogroup.com")
+        from models.plugin_users import PluginUsers
+
+        #u = UserPlugins()
+        #details = u.get_users()
+        #details = u.plugins_subscribed_by("viresh.sanagoudar@ibibogroup.com")
+        p = PluginUsers()
+        details = p.users_subscribed_to_a("nginx")
         print details
         return "testing"
     new_models.exposed = True
