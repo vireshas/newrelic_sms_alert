@@ -1,20 +1,13 @@
-import cherrypy
-import sqlite3
 from jinja2 import Environment, FileSystemLoader
 import json
 from models.user_plugins import UserPlugins
 from models.plugin_users import PluginUsers
 
-def connect(thread_index):
-    cherrypy.thread_data.db = sqlite3.connect("users.db")
-
-cherrypy.engine.subscribe('start_thread', connect)
 env = Environment(loader=FileSystemLoader('static_files'))
 
 class NewrelicPlugins:
     exposed = True
     def GET(self, user='', plugin='', type=''):
-        con = cherrypy.thread_data.db.cursor()
         tmp = env.get_template('user_plugins.html')
         tmp_json = env.get_template('users.html')
 
@@ -75,7 +68,6 @@ class NewrelicPlugins:
 
 
     def POST(self, user="", plugin="", ph_num="new"):
-        con = cherrypy.thread_data.db.cursor()
         tmp = env.get_template('user_plugins.html')
 
         if user and ph_num != "new":
