@@ -106,6 +106,7 @@ class Webhook:
 
         return('Message sent')
 
+
 config = {'/static': {'tools.staticdir.on': True,
     'tools.staticdir.dir': settings.staticfiles_path,
 }}
