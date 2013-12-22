@@ -56,7 +56,7 @@ $(document).ready(function(){
 			user = $(this).val();
 			$("#selected_user").val(user);
 			$.get("/plugin?type=json&user=" + user, function(data){
-				data = $.parseJSON(data) 
+				data = $.parseJSON(data)
 				for(p in data){
 					p = data[p]
 					p = $.trim(p)
@@ -92,5 +92,5 @@ $(document).ready(function(){
 		}
 		str += "</form>"
 		return str
-	}				
+	}
 });
