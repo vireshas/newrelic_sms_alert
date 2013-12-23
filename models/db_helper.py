@@ -15,7 +15,6 @@ class DbHelper:
             where_params = tuple(where_params.split(","))
             where = "where %s = ?" % where
             query = "select %s from %s %s" % (params, table, where)
-            print query
             response = con.execute(query, where_params).fetchall()
         else:
             query = "select %s from %s" % (params, table)
