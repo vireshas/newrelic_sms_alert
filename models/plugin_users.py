@@ -13,3 +13,18 @@ class PluginUsers:
 
     def users_subscribed_to_a(self, plugin):
         return self.db.select(self.table, "users", "plugin", plugin)
+
+    def update_users_for(self, users, plugin):
+        return self.db.update(self.table, "users", users, "plugin", plugin)
+
+
+
+
+
+
+
+
+
+
+
+
