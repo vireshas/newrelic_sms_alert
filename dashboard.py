@@ -22,8 +22,11 @@ class Dashboard:
         #u = UserPlugins()
         #details = u.get_users()
         #details = u.plugins_subscribed_by("viresh.sanagoudar@ibibogroup.com")
+        #details = u.update_plugins_for(['memcache', "redis"],"viresh.sanagoudar@ibibogroup.com")
+
         p = PluginUsers()
-        details = p.users_subscribed_to_a("nginx")
+        #details = p.update_users_for(["viresh.sanagoudar@ibibogroup.com"], "redis")
+        details = p.users_subscribed_to_a('redis')
         print details
         return "testing"
     new_models.exposed = True
