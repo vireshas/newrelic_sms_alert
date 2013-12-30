@@ -95,10 +95,8 @@ class NewrelicPlugins:
                         plugin_users_map = PluginUsers().users_subscribed_to_a(p)
                         users = json.loads(plugin_users_map[0][0])
                         del users[users.index(user)]
-                        con.execute("update plugin_users set users=? where plugin=?", (json.dumps(users), p))
-                        cherrypy.thread_data.db.commit()
-                con.execute("update user_plugins set plugins=? where user=?", (json.dumps([]), user))
-                cherrypy.thread_data.db.commit()
+                        PluginUsers().update_users_for(users, p)
+                UserPlugins().update_plugins_for([], user)
 
                 #unsubscribe from few alerts
                 plugin_new = plugin.split(",")
@@ -106,13 +104,12 @@ class NewrelicPlugins:
                     if p in plugins:
                         continue
                     else:
-                        plugin_users_map = con.execute("select users from plugin_users where plugin = ?", (p,)).fetchall()
+                        plugin_users_map = PluginUsers().users_subscribed_to_a(p)
                         if not plugin_users_map: return tmp.render(plugins = [], warnings = "Please check if plugin name is valid")
                         users = json.loads(plugin_users_map[0][0])
                         if user in users: continue
                         users.append(user)
-                        con.execute("update plugin_users set users=? where plugin=?", (json.dumps(users), p))
-                        cherrypy.thread_data.db.commit()
+                        PluginUsers().update_users_for(users, p)
 
                 deleted_plugins = [plug for plug in plugins if plug not in plugin_new]
                 #update user with new plugins == deleting older plugins
@@ -120,11 +117,10 @@ class NewrelicPlugins:
                 cherrypy.thread_data.db.commit()
 
                 for p in deleted_plugins:
-                    plugin_users_map = con.execute("select users from plugin_users where plugin = ?", (p,)).fetchall()
+                    plugin_users_map = PluginUsers().users_subscribed_to_a(p)
                     users = json.loads(plugin_users_map[0][0])
                     del users[users.index(user)]
-                    con.execute("update plugin_users set users=? where plugin=?", (json.dumps(users), p))
-                    cherrypy.thread_data.db.commit()
+                    PluginUsers().update_users_for(users, p)
                 msg = "You are now subscribed to %s" % p
                 return tmp.render(plugins = [], warnings = msg)
 
