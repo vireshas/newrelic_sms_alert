@@ -9,7 +9,7 @@ import sys
 
 usage = "Usage:\npython scripts.py (option)\n\nOptions:\n  pull_new_users: "\
         + "pull new users from newrelic\n  configure_db: creates tables,"\
-        + "configures dbwith initial values"\
+        + "configures dbwith initial values\n  "\
         + "pull_new_policies: pulls new policies"
 
 if len(sys.argv) > 1:
