@@ -1,0 +1,28 @@
+users = {
+          "viresh.sanagoudar.com" : "78292"
+          "viresh.sanagoudar1.com" : "782927"
+          "viresh.sanagoudar2.com" : "7829271"
+       }
+
+plugins = ["cyclone", "memcache", "redis", "mysql", "nginx", "apache", "cms"]
+
+filters = ["ended"]
+
+default = {
+            "viresh.sanagoudar" : "78292717"
+          }
+
+smsUrl = "ADD AN URL HERE, sms module will use this url to forward msgs"
+
+#additional params required to send an sms
+smsParams = { 
+        'app' : 'android',
+        'other' : 'params' 
+    }
+
+bitly_access_token = "BITLY ACCESS TOKEN"
+
+newrelic_appid = "NEWRELIC APP ID"
+
+#path to static file(js,css etc)
+staticfiles_path = "/home/viresh_sanagoudar/newrelic_custom_alert/templates/"
