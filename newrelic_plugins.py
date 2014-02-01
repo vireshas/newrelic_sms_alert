@@ -113,8 +113,7 @@ class NewrelicPlugins:
 
                 deleted_plugins = [plug for plug in plugins if plug not in plugin_new]
                 #update user with new plugins == deleting older plugins
-                con.execute("update user_plugins set plugins=? where user=?", (json.dumps(plugin_new), user))
-                cherrypy.thread_data.db.commit()
+                UserPlugins().update_plugins_for(plugin_new, user)
 
                 for p in deleted_plugins:
                     plugin_users_map = PluginUsers().users_subscribed_to_a(p)
