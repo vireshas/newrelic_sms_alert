@@ -14,11 +14,10 @@
 			<div id="nav_bar" class="row">
 				<div class="col-md-3">
 					<center><h2><small>Dashboard</small></h2></center>
-					<ul class="nav nav-pills nav-stacked">
-						<li><a href="/usage" class="btn">Usage</a></li>
-						<li><a href="/subscribe" class="btn active">Subscribe</a></li>
-						<li><a href="/plugin?user=all_details" class="btn">Users</a></li>
-                        <li><a href="/plugin?user=all_details" class="btn {% if type == "user" %} active" {% else %}" {% endif %}>Users</a></li>
+                    <ul class="nav nav-pills nav-stacked">
+						<li><a href="/usage" class="btn{% if type == "usage" %} active" {% else %}" {% endif %}>Usage</a></li>
+                        <li><a href="/subscribe" class="btn{% if type == "subscribe" %} active" {% else %}" {% endif %}>Subscribe</a></li>
+                        <li><a href="/plugin?user=all_details" class="btn{% if type == "user" %} active" {% else %}" {% endif %}>Users</a></li>
 					</ul>
 				</div>
                 <div id="main_content" class="col-md-8 jumbotron">
