@@ -1,44 +1,17 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="/static/dist/css/bootstrap.css">
-		<style type="text/css">
-			body{
-				background-color:#f8f8f8;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div id="nav_bar" class="row">
-				<div class="col-md-3">
-					<center><h2><small>Dashboard</small></h2></center>
-					<ul class="nav nav-pills nav-stacked">
-						<li><a href="/usage" class="btn">Usage</a></li>
-						<li><a href="/subscribe" class="btn">Subscribe</a></li>
-						<li><a href="/plugin?user=all_details" class="btn {% if type == "user" %} active" {% else %}" {% endif %}>Users</a></li>
-					</ul>
-				</div>
-				<div id="main_content" class="col-md-8 jumbotron">
-					{% for element in elements %}
-						{% if element[1] == "existing" %}
-							<li>{{element[0]}}</li>
-						{% else %}
-						<li>{{element[0]}}  <button type="submit" id="{{element[0]}}">New User; Add details</button></li>
-						{% endif %}
-					{% endfor %}
-					</br>
-					<div id="adding_new_user" style="display:none">
-						Email: <input type="email" id="new_user" placeholder="Enter email" readonly size=30></br>
-						Ph.No: <input type="text" id="ph_num" placeholder="Enter phone number" size="30"></br>
-					  	<button type="submit" id="create_new_user" class="btn btn-default">Submit</button>
-					</div>
-				</div>
-		</div>
-		<script type="text/javascript" src="/static/jquery.js"></script>
-		<script type="text/javascript" src="/static/dist/js/bootstrap.js"></script>
-		<script type="text/javascript" src="/static/dashboard.js"></script>
-		<script type="text/javascript" src="/static/bootbox.min.js"></script>
-	</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+    {% for element in elements %}
+        {% if element[1] == "existing" %}
+            <li>{{element[0]}}</li>
+        {% else %}
+        <li>{{element[0]}}  <button type="submit" id="{{element[0]}}">New User; Add details</button></li>
+        {% endif %}
+    {% endfor %}
+    </br>
+    <div id="adding_new_user" style="display:none">
+        Email: <input type="email" id="new_user" placeholder="Enter email" readonly size=30></br>
+        Ph.No: <input type="text" id="ph_num" placeholder="Enter phone number" size="30"></br>
+        <button type="submit" id="create_new_user" class="btn btn-default">Submit</button>
+    </div>
+{% endblock %}
