@@ -27,6 +27,5 @@ class DbHelper:
         partial_query = "update %s set %s=? where %s=?" % (table, set_key, where_key)
         if not json_value: set_value = json.dumps(set_value)
         params = (set_value, where_value)
-        print params
         con.execute(partial_query, params)
         cherrypy.thread_data.db.commit()
