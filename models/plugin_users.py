@@ -17,14 +17,3 @@ class PluginUsers:
     def update_users_for(self, users, plugin):
         return self.db.update(self.table, "users", users, "plugin", plugin)
 
-
-
-
-
-
-
-
-
-
-
-
