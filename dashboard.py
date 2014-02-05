@@ -17,19 +17,7 @@ class Dashboard:
 
     def new_models(self):
         from models.user_plugins import UserPlugins
-        from models.plugin_users import PluginUsers
-
         u = UserPlugins()
-        #details = u.get_users()
-        #details = u.plugins_subscribed_by("viresh.sanagoudar@ibibogroup.com")
-        #details = u.update_plugins_for(['memcache', "redis"],"viresh.sanagoudar@ibibogroup.com")
-        #details = u.update_ph_num_for("7878","viresh.sanagoudar@ibibogroup.com")
-        details = u.create_new_user("xxviresh.sanagoudar@ibibogroup.com", "34523")
-
-
-        #p = PluginUsers()
-        #details = p.update_users_for(["viresh.sanagoudar@ibibogroup.com"], "redis")
-        #details = p.users_subscribed_to_a('redis')
-        print details
+        details = u.create_new_user("vv@as.com", "34523")
         return "testing"
     new_models.exposed = True
