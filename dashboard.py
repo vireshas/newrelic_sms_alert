@@ -7,12 +7,12 @@ class Dashboard:
     @cherrypy.expose
     def subscribe(self):
         tmp = env.get_template("subscribe.html")
-        return tmp.render()
+        return tmp.render(type="subscribe")
     subscribe.exposed = True
 
     def usage(self):
         tmp = env.get_template("usage.html")
-        return tmp.render()
+        return tmp.render(type="usage")
     usage.exposed = True
 
     def new_models(self):
