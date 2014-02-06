@@ -14,6 +14,5 @@ class UserPlugins:
     def get_users(self):
         return self.db.select(self.table, "user")
 
-#con.execute("update user_plugins set plugins=? where user=?", (json.dumps(plugin_new), user))
     def update_plugins_for(self, plugins, user):
         return self.db.update(self.table, "plugins", plugins, "user", user)
