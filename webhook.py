@@ -112,5 +112,8 @@ cherrypy.tree.mount(Webhook(), "/webhook",{ '/':{
     'request.dispatch': cherrypy.dispatch.MethodDispatcher() 
 }})
 
+cherrypy.config.update({'server.socket_host': settings.server_host, })
+cherrypy.config.update({'server.socket_port': int(settings.server_port), })
+
 cherrypy.engine.start()
 cherrypy.engine.block()
