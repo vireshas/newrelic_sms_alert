@@ -32,3 +32,7 @@ newrelic_appid = "NEWRELIC APP ID"
 
 #path to static file(js,css etc)
 staticfiles_path = "/home/viresh_sanagoudar/newrelic_custom_alert/templates/"
+
+#host and port <- server listens here
+server_host = "0.0.0.0"
+server_port = "8080"
