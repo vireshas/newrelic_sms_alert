@@ -81,7 +81,7 @@ class NewrelicPlugins:
         if user and ph_num != "new":
             res = con.execute("update user_plugins set ph_num=? where user=?", (ph_num, user))
             cherrypy.thread_data.db.commit()
-            return("user details  updated")
+            return("user details updated")
 
         #if not plugin: return(tmp.render(plugins = [], warnings = "Please pass a plugin name"))
         if user:
@@ -92,7 +92,7 @@ class NewrelicPlugins:
                 #unsubscribe from all alerts
                 if plugin == "":
                     for p in plugins:
-                        plugin_users_map = con.execute("select users from plugin_users where plugin = ?", (p,)).fetchall()
+                        plugin_users_map = PluginUsers().users_subscribed_to_a(p)
                         users = json.loads(plugin_users_map[0][0])
                         del users[users.index(user)]
                         con.execute("update plugin_users set users=? where plugin=?", (json.dumps(users), p))
