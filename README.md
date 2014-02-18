@@ -23,4 +23,4 @@ NewRelic alerts via SMS
     Visit localhost:8080/usage, to manage users and to subscribe to a plugin.
 
 ##More features:  
-    1. Call devs and read out the alert on critical errors
+    1. Phone call on critical errors
