@@ -1,17 +1,21 @@
+#user email to phone_number mapping
 users = {
           "viresh.sanagoudar.com" : "78292"
           "viresh.sanagoudar1.com" : "782927"
           "viresh.sanagoudar2.com" : "7829271"
        }
 
-plugins = ["cyclone", "memcache", "redis", "mysql", "nginx", "apache", "cms"]
+#list of plugin alerts you use in newrelic
+plugins = ["memcache", "redis", "mysql", "nginx", "apache"]
 
+#alerts having these filters are filtered out
 filters = ["ended"]
 
+#default user who receives all the alerts(SYS ADMIN)
 default = {
             "viresh.sanagoudar" : "78292717"
           }
-
+#api to send a sms
 smsUrl = "ADD AN URL HERE, sms module will use this url to forward msgs"
 
 #additional params required to send an sms
@@ -20,8 +24,10 @@ smsParams = {
         'other' : 'params' 
     }
 
+#bitly is used to shorten url
 bitly_access_token = "BITLY ACCESS TOKEN"
 
+#new relic app id
 newrelic_appid = "NEWRELIC APP ID"
 
 #path to static file(js,css etc)
