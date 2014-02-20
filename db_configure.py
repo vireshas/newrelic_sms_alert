@@ -12,7 +12,7 @@ for plugin in settings.plugins:
 
 newrelic = NewrelicHelper()
 
-for app in newrelic.all_applications():
+for app in newrelic.all_alert_policies():
     a.execute("insert into plugin_users values(?,?,?)", (app, json.dumps([]), "app"))
 
 old_users = settings.users

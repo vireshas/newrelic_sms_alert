@@ -13,6 +13,13 @@ class NewrelicHelper:
     }
     api_resp_type = "json"
 
+    def all_alert_policies(self):
+        end_point = "alert_policies"
+        resp = self.api_call(end_point, {})
+        alert_policies = resp[end_point]
+        alerts = [a["name"] for a in alert_policies]
+        return(alerts)
+
     def all_users(self):
         end_point = "users"
         resp = self.api_call(end_point, {})
