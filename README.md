@@ -8,9 +8,11 @@ NewRelic alerts via SMS
     project gives a web and REST api based interface to manage users data and   
     plugin alerts.
 
-    Change settings.py.sample and run python webhook.py. If python complains about missing  
-    librarys, install them and re-run the command. It starts a service at port 8080. Use  
-    something like runscope.com, if you want to test it with newrelic, before deploying.  
+    Change settings.py.sample and run python db_configure.py, this will configure 
+    the database with your plugins, users. You are all set, run python webhook.py. 
+    If python complains about missing librarys, install them and re-run the command. 
+    It starts a service at port 8080(configurable). Use something like runscope.com, 
+    if you want to test it with newrelic, before deploying.  
     With runscope.com, you can quickly expose a localservice to public.  
 
     Google about creating webhook channels in newrelic. Create a channel for webhook and  
