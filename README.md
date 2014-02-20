@@ -1,12 +1,12 @@
 NewRelic alerts via SMS
 =========================
 
-    ### tl;dr
+#### tl;dr
     1. update settings.py.sample  
     2. python db_configure.py
     3. python webhook.py
 
-### Why? and How?
+#### Why? and How?
     With NewRelic webhooks, one can write a custom web app to play with alerts.  
     Here is an attempt to send an SMS whenever we receive an alert.  
     
@@ -32,7 +32,7 @@ NewRelic alerts via SMS
 
     Visit localhost:8080/usage, to manage users and to subscribe to a plugin.
 
-### Additional features:  
+#### Additional features:  
     1. Phone call on critical errors  
     2. Add graphs to the dashboard  
     3. Status page  
