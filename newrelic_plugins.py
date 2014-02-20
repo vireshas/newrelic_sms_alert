@@ -16,7 +16,6 @@ class NewrelicPlugins:
         tmp = env.get_template('user_plugins.html')
         tmp_json = env.get_template('users.html')
 
-        #pass plugin = all for fetch all the user
         if plugin == "plugin" or plugin == "app":
             plugins = con.execute("select plugin from plugin_users where type=?", (plugin,)).fetchall()
             plugins = [u[0] for u in plugins]
@@ -35,7 +34,7 @@ class NewrelicPlugins:
                     new_list.append([u[0], "new_user"])
             return tmp.render(elements=new_list, type="user")
 
-        #pass user = all for fetch all the user
+        #pass user = all to fetch all the users
         if user == "all":
             users = con.execute("select user from user_plugins").fetchall()
             users = [u[0] for u in users]
@@ -44,7 +43,7 @@ class NewrelicPlugins:
             else:
                 return tmp.render(elements = users, type="user")
 
-        #pass plugin = all for fetch all the user
+        #pass plugin = all to fetch all the plugins
         if plugin == "all":
             plugins = con.execute("select plugin from plugin_users").fetchall()
             plugins = [u[0] for u in plugins]
