@@ -1,8 +1,8 @@
 #user email to phone_number mapping
 users = {
-          "viresh.sanagoudar.com" : "78292"
-          "viresh.sanagoudar1.com" : "782927"
-          "viresh.sanagoudar2.com" : "7829271"
+          "viresh.sanagoudar.com" : "PHONE_NUMBER"
+          "viresh.sanagoudar1.com" : "PHONE_NUMBER"
+          "viresh.sanagoudar2.com" : "PHONE_NUMBER"
        }
 
 #list of plugin alerts you use in newrelic
@@ -13,7 +13,7 @@ filters = ["ended"]
 
 #default user who receives all the alerts(SYS ADMIN)
 default = {
-            "viresh.sanagoudar" : "78292717"
+            "viresh.sanagoudar" : "PHONE_NUMBER"
           }
 #api to send a sms
 smsUrl = "ADD AN URL HERE, sms module will use this url to forward msgs"
