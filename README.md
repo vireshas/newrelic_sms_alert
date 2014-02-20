@@ -2,11 +2,11 @@ NewRelic alerts via SMS
 =========================
 
 #### tl;dr
-    1. update settings.py.sample  
+    1. update settings.py.sample, save as settings.py 
     2. python db_configure.py
     3. python webhook.py
 
-#### Why? and How?
+#### Why?
     With NewRelic webhooks, one can write a custom web app to play with alerts.  
     Here is an attempt to send an SMS whenever we receive an alert.  
     
@@ -14,6 +14,7 @@ NewRelic alerts via SMS
     project gives a web and REST api based interface to manage users data and   
     plugin alerts.
 
+#### How?
     Change settings.py.sample and run python db_configure.py, this will configure 
     the database with your plugins, users. You are all set, run python webhook.py. 
     If python complains about missing librarys, install them and re-run the command. 
