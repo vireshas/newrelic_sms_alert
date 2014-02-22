@@ -4,7 +4,7 @@ import json
 import settings
 
 class NewrelicHelper:
-    app_id = settings.newrelic_appid 
+    app_id = settings.newrelic_appid
     parent_url = "https://api.newrelic.com/v2/"
     api_endpoints = {
             "alert_policy" : "alert_policies",
@@ -39,7 +39,6 @@ class NewrelicHelper:
         users = []
         applicaiton_details = self.fetch_alert_policies(application_name)
         if not applicaiton_details: return(users)
-
         notifications = applicaiton_details[0]["links"]["notification_channels"]
         for notification in notifications:
             user_id = self.fetch_notification_details(notification)
