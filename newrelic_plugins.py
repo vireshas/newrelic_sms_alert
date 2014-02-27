@@ -2,14 +2,16 @@ import cherrypy
 import sqlite3
 from jinja2 import Environment, FileSystemLoader
 import json
+from models.user_plugins import UserPlugins
+from models.plugin_users import PluginUsers
 
-def connect(thread_index): 
+def connect(thread_index):
     cherrypy.thread_data.db = sqlite3.connect("users.db")
-                 
+
 cherrypy.engine.subscribe('start_thread', connect)
 env = Environment(loader=FileSystemLoader('static_files'))
 
-class NewrelicPlugins:  
+class NewrelicPlugins:
     exposed = True
     def GET(self, user='', plugin='', type=''):
         con = cherrypy.thread_data.db.cursor()
@@ -25,7 +27,7 @@ class NewrelicPlugins:
                 return tmp.render(elements=plugins, type="plugin")
 
         if user == "all_details":
-            users = con.execute("select user,ph_num from user_plugins").fetchall()
+            users = UserPlugins().get_user_and_ph_num()
             new_list = []
             for u in users:
                 if u[1] != "new":
@@ -36,7 +38,7 @@ class NewrelicPlugins:
 
         #pass user = all to fetch all the users
         if user == "all":
-            users = con.execute("select user from user_plugins").fetchall()
+            users = UserPlugins().get_users()
             users = [u[0] for u in users]
             if type=="json":
                 return tmp_json.render(elements=json.dumps(users))
@@ -45,7 +47,7 @@ class NewrelicPlugins:
 
         #pass plugin = all to fetch all the plugins
         if plugin == "all":
-            plugins = con.execute("select plugin from plugin_users").fetchall()
+            plugins = PluginUsers().get_plugins()
             plugins = [u[0] for u in plugins]
             if type=="json":
                 return tmp_json.render(elements=json.dumps(plugins))
@@ -54,7 +56,7 @@ class NewrelicPlugins:
 
         #pass user email or plugin name to fetch more details
         if user:
-            res = con.execute("select plugins from user_plugins where user = ?", (user,)).fetchall()
+            res = UserPlugins().plugins_subscribed_by(user)
             if not res:
                 return tmp.render(plugins = [])
             elif type == "json":
@@ -82,7 +84,7 @@ class NewrelicPlugins:
 
         #if not plugin: return(tmp.render(plugins = [], warnings = "Please pass a plugin name"))
         if user:
-            res = con.execute("select plugins from user_plugins where user = ?", (user,)).fetchall()
+            res = UserPlugins().plugins_subscribed_by(user)
             if res:
                 plugins = json.loads(res[0][0])
 
