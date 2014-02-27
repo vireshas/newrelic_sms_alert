@@ -14,3 +14,12 @@ class Dashboard:
         tmp = env.get_template("usage.html")
         return tmp.render()
     usage.exposed = True
+
+    def new_models(self):
+        from models.user_plugins import UserPlugins
+        u = UserPlugins()
+        details = u.get_users()
+        details = u.plugins_subscribed_by("viresh.sanagoudar@ibibogroup.com")
+        print details
+        return "testing"
+    new_models.exposed = True
