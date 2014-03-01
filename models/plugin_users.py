@@ -1,23 +1,15 @@
-import cherrypy
-import sqlite3
-from jinja2 import Environment, FileSystemLoader
-import json
-
-def connect(thread_index):
-    cherrypy.thread_data.db = sqlite3.connect("users.db")
-
-cherrypy.engine.subscribe('start_thread', connect)
+from models.db_helper import DbHelper
 
 class PluginUsers:
-    def get_user_and_ph_num(self):
-        return self.read("user,ph_num")
+    def __init__(self):
+        self.db = DbHelper()
+        self.table = "plugin_users"
 
     def get_plugins(self):
-        return self.read("plugin")
+        return self.db.select(self.table, "plugin")
 
-    def read(self, params="*"):
-        con = cherrypy.thread_data.db.cursor()
-        query = "select %s from plugin_users" % params
-        users = con.execute(query).fetchall()
-        return users
+    def get_plugin_of_type(self, type):
+        return self.db.select(self.table, "plugin", "type", type)
 
+    def users_subscribed_to_a(self, plugin):
+        return self.db.select(self.table, "users", "plugin", plugin)
