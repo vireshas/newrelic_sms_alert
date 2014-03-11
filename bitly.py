@@ -15,7 +15,7 @@ class Bitly:
     def shorten_url(self, url):
         params = Bitly.post_params.copy()
         params.update({"longUrl": url})
-        post_data = urllib.urlencode(params) 
+        post_data = urllib.urlencode(params)
         req = urllib2.Request(Bitly.url, post_data)
         response = urllib2.urlopen(req)
         resp = json.load(response)
