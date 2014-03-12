@@ -15,7 +15,7 @@ def connect(thread_index):
 
 cherrypy.engine.subscribe("start_thread", connect)
 
-def handler(signum, frame): 
+def handler(signum, frame):
     reload(settings)
     Webhook.all_users = []
     Webhook().fill_all_users()
@@ -43,8 +43,16 @@ class Webhook:
             all_users[u[0]] = [u[1], u[2]]
         return all_users
 
-    def GET(self, id=None):
-        return("request rcved  %s" % id)
+    def GET(self, users=None, msg='Test', severity='critical', alert_url='http://bitly.com/sdISC0'):
+        all_users = self.get_all_users()
+        for user_email in users.split(','):
+            u_d = all_users.get(user_email, None)
+            if u_d:
+                greeting = u_d[1] and "Hi %s, " % u_d[1] or "Hi, "
+                sms_msg = greeting + msg +  ". It is %s. Alert url: %s" % (severity, alert_url)
+                print sms_msg
+                #if u_d[0] != "new": Sms().send(u_d[0], sms_msg)
+        return('Message sent')
 
     def POST(self, **post_params):
         params = cherrypy.request.body.params
@@ -99,7 +107,7 @@ class Webhook:
         return('Message sent')
 
 config = {'/static': {'tools.staticdir.on': True,
-    'tools.staticdir.dir': settings.staticfiles_path, 
+    'tools.staticdir.dir': settings.staticfiles_path,
 }}
 
 cherrypy.tree.mount(NewrelicPlugins(), "/plugin",{ '/':{
@@ -108,8 +116,8 @@ cherrypy.tree.mount(NewrelicPlugins(), "/plugin",{ '/':{
 
 cherrypy.tree.mount(Dashboard(),config=config)
 
-cherrypy.tree.mount(Webhook(), "/webhook",{ '/':{ 
-    'request.dispatch': cherrypy.dispatch.MethodDispatcher() 
+cherrypy.tree.mount(Webhook(), "/webhook",{ '/':{
+    'request.dispatch': cherrypy.dispatch.MethodDispatcher()
 }})
 
 cherrypy.config.update({'server.socket_host': settings.server_host, })
