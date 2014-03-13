@@ -19,9 +19,9 @@ default = {
 smsUrl = "ADD AN URL HERE, sms module will use this url to forward msgs"
 
 #additional params required to send an sms
-smsParams = { 
+smsParams = {
         'app' : 'android',
-        'other' : 'params' 
+        'other' : 'params'
     }
 
 #bitly is used to shorten url
