@@ -51,7 +51,7 @@ class Webhook:
                 greeting = u_d[1] and "Hi %s, " % u_d[1] or "Hi, "
                 sms_msg = greeting + msg +  ". It is %s. Alert url: %s" % (severity, alert_url)
                 print sms_msg
-                #if u_d[0] != "new": Sms().send(u_d[0], sms_msg)
+                if u_d[0] != "new": Sms().send(u_d[0], sms_msg)
         return('Message sent')
 
     def POST(self, **post_params):
