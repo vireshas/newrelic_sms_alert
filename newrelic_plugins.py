@@ -10,6 +10,7 @@ class NewrelicPlugins:
     def GET(self, user='', plugin='', type=''):
         tmp = env.get_template('user_plugins.html')
         tmp_json = env.get_template('users.html')
+        #get only plugins or apps by passing plugin=app or plugin
         if plugin == "plugin" or plugin == "app":
             plugins = PluginUsers().get_plugin_of_type(plugin)
             plugins = [u[0] for u in plugins]
@@ -17,6 +18,7 @@ class NewrelicPlugins:
                 return tmp_json.render(elements=json.dumps(plugins))
             else:
                 return tmp.render(elements=plugins, type="plugin")
+        #return every detail about the user when you pass user=all_details
         if user == "all_details":
             users = UserPlugins().get_user_and_ph_num()
             new_list = []
