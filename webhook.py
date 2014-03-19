@@ -1,8 +1,8 @@
 import cherrypy
 import settings
-from dashboard import Dashboard
-from newrelic_plugins import NewrelicPlugins
-from app import App
+from controller.dashboard import Dashboard
+from controller.newrelic_plugins import NewrelicPlugins
+from controller.app import App
 
 config = {'/static': {'tools.staticdir.on': True,
     'tools.staticdir.dir': settings.staticfiles_path,
