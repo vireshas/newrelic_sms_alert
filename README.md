@@ -3,7 +3,7 @@ NewRelic alerts via SMS
 
 #### tl;dr
     1. update settings.py.sample, save as settings.py
-    2. python db_configure.py
+    2. python scripts.py configure_db
     3. python webhook.py
 
 #### Why?
