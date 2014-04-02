@@ -1,4 +1,10 @@
 #runs all the scripts
+
+"""
+   python scripts.py: gives you instructions to use this script
+
+"""
+
 import sys
 
 usage = "Usage:\npython scripts.py (option)\n\nOptions:\n  pull_new_users: "\
